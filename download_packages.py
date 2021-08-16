@@ -1,3 +1,20 @@
+# standard library
+
+import urllib.request
+
+with open(r'E:\arcgis-mgrs-air-gapped.txt', 'r') as txt_file:
+    contents = txt_file.readlines()  
+
+for i in contents:
+    if 'https://' in i:
+        url = i.strip('\n')
+        file_name = f"E:\\{url.split('/')[-1]}"
+        print(url, file_name)
+        urllib.request.urlretrieve(url, file_name)
+
+
+
+# requires requests
 import requests, os
 
 specs_path = r'E:\miniconda_specs.txt'
