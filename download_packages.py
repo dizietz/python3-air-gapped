@@ -30,3 +30,26 @@ for url in urls:
     file_dest = os.path.join(download_path,file_name)
     print(file_dest)
     open(file_dest, 'wb').write(r.content)
+
+    
+
+# update file paths from URL to local
+import urllib.request, os
+
+text_path = r'E:\air_gapped_mgrs_arcgis\arcgis-mgrs-air-gapped.txt'
+local_path = r"E:/"
+text_file = text_path.split('\\')[-1]
+
+with open(text_path, 'r') as txt_file:
+    contents = txt_file.readlines()
+
+with open(f"{local_path}{text_file}", 'a') as new_text_file:
+    for i in contents:
+        if 'https://' in i:
+            url = i.strip('\n')
+            file_name = os.path.join(local_path,url.split('/')[-1])
+            print(file_name)
+            new_text_file.write(f"{file_name}\n")
+        else:
+            print(i)
+            new_text_file.write(i)
