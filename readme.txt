@@ -8,7 +8,9 @@ https://david-e-warren.me/blog/anaconda-python-on-air-gapped-computers/
 
 $ conda create --name myenv python=3.6.7
 $ conda activate myenv
-$ conda install pillow pip
+$ conda install -c esri arcgis
+$ conda install -c conda-forge mgrs
+$ conda install -c conda-forge shapely
 
 $ conda list --explicit > /path/for/spec_file.txt
 
